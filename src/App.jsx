@@ -2,6 +2,8 @@ import { useState } from "react";
 import logoImage from "./assets/Bitterroot Floors and More Logo (500 x 250 px) (1).png";
 import warehouseImage from "./assets/Untitled design (31).png";
 import beforeAfterImage from "./assets/Before and After 1.png";
+import landingPageImage from "./assets/landing page image.png";
+import landingPageImageTwo from "./assets/Landing page image 2.png";
 
 const trustBadges = [
   "5-Star Google Rating",
@@ -42,19 +44,34 @@ const categories = ["Hardwood", "LVP", "Tile"];
 
 const testimonials = [
   {
-    quote: "They finished in one day and left the house spotless. The entire process felt effortless.",
-    name: "Sarah M.",
-    detail: "Hamilton homeowner",
+    quote:
+      "Krystal worked with our company to find the best product for our customers. We have had some of the best customer service ever. Worked with our salesperson and their vendor representative to find the best product for our needs. We will continue to work with them. Above and beyond.",
+    name: "Sam Fawcett",
+    detail: "Customer review",
   },
   {
-    quote: "The financing was seamless, and seeing the samples in our own light made the decision easy.",
-    name: "Jason and Kelli R.",
-    detail: "Stevensville remodel",
+    quote:
+      "Great carpet installers that did more than we expected. They were never late all four days of their work. Very knowledgeable in every way with helping us \"old folks\". I would give this company a 10 for a rating if I could. Krystal was helpful from day one as well.",
+    name: "Roger Pietz",
+    detail: "Customer review",
   },
   {
-    quote: "Professional from estimate to install. We never felt pressured, and the floors look incredible.",
-    name: "Monica T.",
-    detail: "Florence customer",
+    quote:
+      "Super happy with our experience with bitterroot floors! We had a couple hiccups but they were quick to remedy and very accommodating! They put carpet in our entire downstairs and our stairs/landing. It looks incredible & was fairly priced. We can’t wait to do our upstairs bedrooms next!",
+    name: "Jade Houser",
+    detail: "Customer review",
+  },
+  {
+    quote:
+      "Krystal took the time to go over the products we were interested in and offered the right products based on our needs and budget. I appreciated their large selection of flooring and personalized customer service.",
+    name: "Liz Pickford",
+    detail: "Customer review",
+  },
+  {
+    quote:
+      "Amazing service with affordable prices! The owner was honest and direct in helping me determine what flooring would work best in my home. Plus the installation was done on-time and looks amazing!",
+    name: "Kamie Gladden",
+    detail: "Customer review",
   },
 ];
 
@@ -270,12 +287,11 @@ function App() {
             practical design guidance without pressure. Ask about design services if you want extra help pulling the right look together.
           </p>
           <div className="consultation-showcase mx-auto mt-10">
-            <div className="sample-scene">
-              <div className="sample-person" />
-              <div className="sample-board sample-board-a" />
-              <div className="sample-board sample-board-b" />
-              <div className="sample-board sample-board-c" />
-            </div>
+            <img
+              src={landingPageImageTwo}
+              alt="Bitterroot showroom consultation"
+              className="consultation-image"
+            />
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <span className="pill-dark">Licensed</span>
@@ -322,7 +338,7 @@ function App() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
           <div className="before-after-card">
             <img
-              src={beforeAfterImage}
+              src={landingPageImage}
               alt="Before and after flooring transformation"
               className="before-after-image"
             />
@@ -370,12 +386,12 @@ function App() {
             <article className="testimonial-card testimonial-highlight">
               <div className="star-row">5.0 / 5</div>
               <p className="mt-4 text-2xl font-[800] leading-tight text-[var(--ink)]">
-                &quot;Professional from estimate to install. We never felt pressured.&quot;
+                &quot;{testimonials[0].quote}&quot;
               </p>
-              <p className="mt-6 text-sm uppercase tracking-[0.2em] text-slate-500">Real customer project</p>
+              <p className="mt-6 text-sm uppercase tracking-[0.2em] text-slate-500">{testimonials[0].name}</p>
             </article>
             <div className="grid gap-5">
-              {testimonials.slice(0, 2).map((testimonial) => (
+              {testimonials.slice(1).map((testimonial) => (
                 <article key={testimonial.name} className="testimonial-card">
                   <div className="star-row">5.0 / 5</div>
                   <p className="mt-4 text-base leading-7 text-slate-700">&quot;{testimonial.quote}&quot;</p>

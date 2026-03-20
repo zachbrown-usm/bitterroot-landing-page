@@ -353,6 +353,14 @@ a {
   box-shadow: 0 28px 70px rgba(19, 33, 47, 0.08);
 }
 
+.consultation-image {
+  display: block;
+  width: 100%;
+  min-height: 28rem;
+  border-radius: 1.4rem;
+  object-fit: cover;
+}
+
 .sample-scene {
   position: relative;
   min-height: 28rem;
