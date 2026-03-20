@@ -371,11 +371,10 @@ function App() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="category-chip">BBB A+ Rating</span>
-            <span className="category-chip">Google 5-Star Logo</span>
+            <span className="category-chip">25+ Five-Star Reviews on Google</span>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr_1fr]">
+          <div className="review-grid mt-10">
             <div className="photo-tile photo-tile-a">
               <img
                 src={beforeAfterImage}
@@ -383,22 +382,24 @@ function App() {
                 className="photo-tile-image"
               />
             </div>
-            <article className="testimonial-card testimonial-highlight">
-              <div className="star-row">5.0 / 5</div>
-              <p className="mt-4 text-2xl font-[800] leading-tight text-[var(--ink)]">
-                &quot;{testimonials[0].quote}&quot;
-              </p>
-              <p className="mt-6 text-sm uppercase tracking-[0.2em] text-slate-500">{testimonials[0].name}</p>
-            </article>
-            <div className="grid gap-5">
-              {testimonials.slice(1).map((testimonial) => (
-                <article key={testimonial.name} className="testimonial-card">
-                  <div className="star-row">5.0 / 5</div>
-                  <p className="mt-4 text-base leading-7 text-slate-700">&quot;{testimonial.quote}&quot;</p>
-                  <p className="mt-5 text-sm font-[800] text-[var(--ink)]">{testimonial.name}</p>
-                  <p className="text-sm text-slate-500">{testimonial.detail}</p>
-                </article>
-              ))}
+            <div className="review-stack">
+              <article className="testimonial-card testimonial-highlight">
+                <div className="star-row">5.0 / 5</div>
+                <p className="mt-4 text-2xl font-[800] leading-tight text-[var(--ink)]">
+                  &quot;{testimonials[0].quote}&quot;
+                </p>
+                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-slate-500">{testimonials[0].name}</p>
+              </article>
+              <div className="review-card-grid">
+                {testimonials.slice(1).map((testimonial) => (
+                  <article key={testimonial.name} className="testimonial-card">
+                    <div className="star-row">5.0 / 5</div>
+                    <p className="mt-4 text-base leading-7 text-slate-700">&quot;{testimonial.quote}&quot;</p>
+                    <p className="mt-5 text-sm font-[800] text-[var(--ink)]">{testimonial.name}</p>
+                    <p className="text-sm text-slate-500">{testimonial.detail}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>

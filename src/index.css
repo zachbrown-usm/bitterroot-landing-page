@@ -27,6 +27,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -115,9 +116,11 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  padding: 1rem 1.5rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
   font-size: 0.95rem;
   font-weight: 800;
+  text-align: center;
   transition:
     transform 180ms ease,
     background-color 180ms ease,
@@ -147,9 +150,11 @@ a {
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
+  max-width: 100%;
   padding: 0.7rem 1rem;
   font-size: 0.78rem;
   font-weight: 700;
+  line-height: 1.35;
 }
 
 .pill {
@@ -168,8 +173,8 @@ a {
 .hero-card,
 .offer-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 2rem;
-  padding: 1.2rem;
+  border-radius: 1.5rem;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
@@ -177,9 +182,9 @@ a {
 
 .room-preview {
   position: relative;
-  min-height: 24rem;
+  min-height: 18rem;
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   background:
     linear-gradient(180deg, #d7e8f2 0%, #f8f5ef 44%, #a37754 44.4%, #7b5638 100%);
 }
@@ -263,10 +268,10 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(10, 17, 23, 0.24);
-  padding: 1rem;
+  padding: 0.9rem;
 }
 
 .metric-value {
@@ -299,9 +304,9 @@ a {
 
 .problem-visual {
   position: relative;
-  min-height: 24rem;
+  min-height: 19rem;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -316,23 +321,24 @@ a {
 
 .shopper-card {
   position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  max-width: 16rem;
-  border-radius: 1.5rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  max-width: none;
+  border-radius: 1.25rem;
   background: rgba(9, 16, 22, 0.82);
-  padding: 1.4rem;
+  padding: 1rem;
   backdrop-filter: blur(10px);
 }
 
 .list-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.85rem;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
-  padding: 1rem 1.1rem;
+  padding: 0.95rem 1rem;
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -346,18 +352,18 @@ a {
 
 .consultation-showcase {
   max-width: 56rem;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, #ffffff 0%, #f2eee8 100%);
-  padding: 1rem;
+  padding: 0.8rem;
   box-shadow: 0 28px 70px rgba(19, 33, 47, 0.08);
 }
 
 .consultation-image {
   display: block;
   width: 100%;
-  min-height: 28rem;
-  border-radius: 1.4rem;
+  min-height: 16rem;
+  border-radius: 1.1rem;
   object-fit: cover;
 }
 
@@ -414,10 +420,10 @@ a {
 .feature-card,
 .testimonial-card,
 .faq-card {
-  border-radius: 1.75rem;
+  border-radius: 1.25rem;
   border: 1px solid var(--line);
   background: white;
-  padding: 1.5rem;
+  padding: 1.15rem;
   box-shadow: 0 20px 50px rgba(19, 33, 47, 0.06);
 }
 
@@ -434,9 +440,9 @@ a {
 
 .before-after-card {
   position: relative;
-  min-height: 28rem;
+  min-height: 18rem;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   border: 1px solid rgba(19, 33, 47, 0.08);
   background: white;
 }
@@ -449,21 +455,38 @@ a {
 }
 
 .benefit-row {
-  border-radius: 9999px;
+  border-radius: 1rem;
   background: rgba(255, 255, 255, 0.72);
   padding: 0.9rem 1rem;
 }
 
 .photo-tile {
-  min-height: 22rem;
-  border-radius: 1.75rem;
+  min-height: 16rem;
+  border-radius: 1.25rem;
   overflow: hidden;
   background: white;
   box-shadow: 0 20px 50px rgba(19, 33, 47, 0.08);
 }
 
+.review-grid {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.review-stack {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.review-card-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
 .photo-tile-a {
-  min-height: 30rem;
+  min-height: 18rem;
 }
 
 .testimonial-highlight {
@@ -479,12 +502,12 @@ a {
 .step-card {
   position: relative;
   overflow: hidden;
-  border-radius: 1.8rem;
+  border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
     rgba(255, 255, 255, 0.02);
-  padding: 1.5rem;
+  padding: 1.15rem;
 }
 
 .step-number {
@@ -516,9 +539,9 @@ a {
 
 .offer-stat,
 .offer-callout {
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.74);
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 .offer-big {
@@ -539,7 +562,7 @@ a {
 .faq-button {
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   background: transparent;
@@ -567,7 +590,7 @@ a {
 .faq-answer {
   margin: 1rem 0 0;
   color: #5b6d7a;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .final-cta {
@@ -577,7 +600,7 @@ a {
 }
 
 .cta-input {
-  width: min(100%, 20rem);
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
@@ -591,12 +614,104 @@ a {
 }
 
 @media (min-width: 768px) {
+  .primary-button,
+  .secondary-button {
+    width: auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .hero-card,
+  .offer-card {
+    border-radius: 2rem;
+    padding: 1.2rem;
+  }
+
+  .room-preview,
+  .before-after-card,
+  .photo-tile-a,
+  .consultation-image {
+    min-height: 24rem;
+  }
+
+  .problem-visual {
+    min-height: 24rem;
+    border-radius: 2rem;
+  }
+
+  .shopper-card {
+    left: auto;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    max-width: 16rem;
+    border-radius: 1.5rem;
+    padding: 1.4rem;
+  }
+
+  .consultation-showcase {
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+
+  .consultation-image {
+    border-radius: 1.4rem;
+  }
+
+  .feature-card,
+  .testimonial-card,
+  .faq-card {
+    border-radius: 1.75rem;
+    padding: 1.5rem;
+  }
+
+  .photo-tile {
+    min-height: 22rem;
+    border-radius: 1.75rem;
+  }
+
+  .step-card {
+    border-radius: 1.8rem;
+    padding: 1.5rem;
+  }
+
   .offer-grid {
     grid-template-columns: 0.95fr 1.05fr;
+  }
+
+  .review-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .review-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   }
 }
 
 @media (max-width: 767px) {
+  .hero-logo {
+    width: min(100%, 15rem);
+  }
+
+  .eyebrow,
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+  }
+
+  .section-heading,
+  .section-heading-dark {
+    font-size: clamp(1.9rem, 10vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .section-copy,
+  .section-copy-dark {
+    font-size: 0.96rem;
+    line-height: 1.75;
+  }
+
   .hero-card,
   .offer-card,
   .feature-card,
@@ -608,8 +723,34 @@ a {
   .room-preview,
   .sample-scene,
   .before-after-card,
-  .problem-visual {
+  .problem-visual,
+  .photo-tile,
+  .photo-tile-a,
+  .consultation-image {
     min-height: 20rem;
+  }
+
+  .metric-card {
+    text-align: center;
+  }
+
+  .review-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .star-row {
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+  }
+
+  .faq-button {
+    font-size: 0.95rem;
+  }
+
+  .cta-input,
+  .primary-button,
+  .secondary-button {
+    min-height: 3.25rem;
   }
 
   .sample-board {
