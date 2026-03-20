@@ -180,88 +180,25 @@ a {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
 }
 
-.room-preview {
+.hero-carousel {
   position: relative;
   min-height: 18rem;
   overflow: hidden;
   border-radius: 1.2rem;
-  background:
-    linear-gradient(180deg, #d7e8f2 0%, #f8f5ef 44%, #a37754 44.4%, #7b5638 100%);
 }
 
-.room-window {
+.hero-carousel-image {
   position: absolute;
-  top: 1.8rem;
-  left: 2rem;
-  width: 42%;
-  height: 34%;
-  border-radius: 1rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(214, 234, 245, 0.9)),
-    var(--mist);
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
 }
 
-.room-panel {
-  position: absolute;
-  top: 0;
-  width: 18%;
-  height: 48%;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.room-panel-left {
-  left: 0;
-}
-
-.room-panel-right {
-  right: 0;
-}
-
-.room-floor {
-  position: absolute;
-  inset: auto 0 0;
-  height: 46%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #7c5437 0,
-      #7c5437 40px,
-      #8d6444 40px,
-      #8d6444 80px
-    );
-}
-
-.room-rug {
-  position: absolute;
-  bottom: 2.1rem;
-  left: 50%;
-  width: 42%;
-  height: 20%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, #f2e7d4 0%, #d4baa0 100%);
-}
-
-.room-sofa {
-  position: absolute;
-  right: 2.2rem;
-  bottom: 8rem;
-  width: 35%;
-  height: 20%;
-  border-radius: 2rem 2rem 1rem 1rem;
-  background: #f3f0ea;
-  box-shadow: inset 0 -12px 0 rgba(0, 0, 0, 0.05);
-}
-
-.room-table {
-  position: absolute;
-  left: 40%;
-  bottom: 8rem;
-  width: 18%;
-  height: 10%;
-  border-radius: 9999px;
-  background: rgba(19, 33, 47, 0.12);
+.hero-carousel-image.is-active {
+  opacity: 1;
 }
 
 .metric-card {
@@ -316,6 +253,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   filter: saturate(0.7) brightness(0.62);
 }
 
@@ -626,7 +564,7 @@ a {
     padding: 1.2rem;
   }
 
-  .room-preview,
+  .hero-carousel,
   .before-after-card,
   .photo-tile-a,
   .consultation-image {
@@ -720,7 +658,7 @@ a {
     border-radius: 1.4rem;
   }
 
-  .room-preview,
+  .hero-carousel,
   .sample-scene,
   .before-after-card,
   .problem-visual,
@@ -728,6 +666,17 @@ a {
   .photo-tile-a,
   .consultation-image {
     min-height: 20rem;
+  }
+
+  .problem-image {
+    object-position: center 22%;
+  }
+
+  .shopper-card {
+    top: 1rem;
+    right: 1rem;
+    bottom: auto;
+    left: 1rem;
   }
 
   .metric-card {

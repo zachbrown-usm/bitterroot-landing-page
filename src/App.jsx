@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logoImage from "./assets/Bitterroot Floors and More Logo (500 x 250 px) (1).png";
 import warehouseImage from "./assets/Untitled design (31).png";
 import beforeAfterImage from "./assets/Before and After 1.png";
 import landingPageImage from "./assets/landing page image.png";
 import landingPageImageTwo from "./assets/Landing page image 2.png";
+import heroImageOne from "./assets/1.png";
+import heroImageTwo from "./assets/2.png";
 
 const trustBadges = [
   "5-Star Google Rating",
@@ -174,6 +176,16 @@ function Icon({ type }) {
 
 function App() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const heroImages = [heroImageOne, heroImageTwo];
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setHeroImageIndex((currentIndex) => (currentIndex + 1) % heroImages.length);
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, [heroImages.length]);
 
   return (
     <main className="bg-[var(--ink)] text-white">
@@ -214,14 +226,15 @@ function App() {
 
           <div className="relative z-10">
             <div className="hero-card">
-              <div className="room-preview">
-                <div className="room-window" />
-                <div className="room-panel room-panel-left" />
-                <div className="room-panel room-panel-right" />
-                <div className="room-floor" />
-                <div className="room-rug" />
-                <div className="room-sofa" />
-                <div className="room-table" />
+              <div className="hero-carousel">
+                {heroImages.map((image, index) => (
+                  <img
+                    key={image}
+                    src={image}
+                    alt="Bitterroot showroom inspiration"
+                    className={`hero-carousel-image${heroImageIndex === index ? " is-active" : ""}`}
+                  />
+                ))}
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <div className="metric-card">
@@ -230,7 +243,7 @@ function App() {
                 </div>
                 <div className="metric-card">
                   <span className="metric-value">Huge</span>
-                  <span className="metric-label">Showroom selection to compare in person</span>
+                  <span className="metric-label">Five-star rating</span>
                 </div>
                 <div className="metric-card">
                   <span className="metric-value">A+</span>
