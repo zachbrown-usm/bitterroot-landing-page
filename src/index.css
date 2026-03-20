@@ -144,6 +144,77 @@ a {
   color: white;
 }
 
+.hero-primary-button,
+.footer-primary-button {
+  background: linear-gradient(135deg, #f0c46c 0%, #d89a42 100%);
+  color: #10202d;
+  box-shadow: 0 18px 42px rgba(216, 154, 66, 0.42);
+}
+
+.hero-primary-button {
+  padding: 1.1rem 1.5rem;
+  font-size: 1rem;
+}
+
+.footer-primary-button {
+  padding: 1.05rem 1.4rem;
+  font-size: 1rem;
+}
+
+.hero-phone-link {
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(240, 210, 154, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff8e7;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.96rem;
+  font-weight: 800;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+}
+
+.hero-form {
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.hero-form-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.hero-form-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.95rem 1rem;
+  color: white;
+  outline: none;
+}
+
+.hero-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.hero-form-note {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.urgency-line {
+  color: #ffd995;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .pill,
 .pill-dark,
 .category-chip {
@@ -369,11 +440,16 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 1rem;
   background: rgba(216, 154, 66, 0.14);
   color: var(--gold);
+}
+
+.feature-svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .before-after-card {
@@ -435,6 +511,25 @@ a {
   font-size: 1.1rem;
   letter-spacing: 0.2em;
   color: var(--gold);
+}
+
+.google-review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(19, 33, 47, 0.12);
+  background: white;
+  color: var(--ink);
+  padding: 0.8rem 1rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(19, 33, 47, 0.08);
+}
+
+.google-review-stars {
+  color: var(--gold);
+  letter-spacing: 0.12em;
 }
 
 .step-card {
@@ -551,11 +646,57 @@ a {
   color: rgba(255, 255, 255, 0.52);
 }
 
+.mobile-sticky-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  background: rgba(12, 20, 27, 0.94);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.mobile-sticky-call,
+.mobile-sticky-estimate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.35rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mobile-sticky-call {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.mobile-sticky-estimate {
+  background: linear-gradient(135deg, #f0c46c 0%, #d89a42 100%);
+  color: #10202d;
+}
+
 @media (min-width: 768px) {
   .primary-button,
   .secondary-button {
     width: auto;
     padding: 1rem 1.5rem;
+  }
+
+  .hero-phone-link {
+    justify-content: flex-start;
+  }
+
+  .hero-form-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .hero-card,
@@ -611,12 +752,26 @@ a {
     padding: 1.5rem;
   }
 
+  .feature-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .feature-svg {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
   .offer-grid {
     grid-template-columns: 0.95fr 1.05fr;
   }
 
   .review-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-sticky-bar {
+    display: none;
   }
 }
 
@@ -683,6 +838,10 @@ a {
     text-align: center;
   }
 
+  .hero-phone-link {
+    width: 100%;
+  }
+
   .review-card-grid {
     grid-template-columns: 1fr;
   }
@@ -699,6 +858,10 @@ a {
   .cta-input,
   .primary-button,
   .secondary-button {
+    min-height: 3.25rem;
+  }
+
+  .hero-form-input {
     min-height: 3.25rem;
   }
 

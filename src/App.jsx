@@ -7,6 +7,11 @@ import landingPageImageTwo from "./assets/Landing page image 2.png";
 import heroImageOne from "./assets/1.png";
 import heroImageTwo from "./assets/2.png";
 
+const BUSINESS_PHONE = "(406) 375-0123";
+const BUSINESS_PHONE_LINK = "tel:+14063750123";
+const BUSINESS_START_YEAR = "2000";
+const GOOGLE_REVIEW_SUMMARY = "25+ Five-Star Reviews on Google";
+
 const trustBadges = [
   "5-Star Google Rating",
   "0% Interest Financing",
@@ -48,32 +53,27 @@ const testimonials = [
   {
     quote:
       "Krystal worked with our company to find the best product for our customers. We have had some of the best customer service ever. Worked with our salesperson and their vendor representative to find the best product for our needs. We will continue to work with them. Above and beyond.",
-    name: "Sam Fawcett",
-    detail: "Customer review",
+    detail: "Sam Fawcett, Stevensville",
   },
   {
     quote:
-      "Great carpet installers that did more than we expected. They were never late all four days of their work. Very knowledgeable in every way with helping us \"old folks\". I would give this company a 10 for a rating if I could. Krystal was helpful from day one as well.",
-    name: "Roger Pietz",
-    detail: "Customer review",
+      'Great carpet installers that did more than we expected. They were never late all four days of their work. Very knowledgeable in every way with helping us "old folks". I would give this company a 10 for a rating if I could. Krystal was helpful from day one as well.',
+    detail: "Roger Pietz, Bitterroot Valley",
   },
   {
     quote:
-      "Super happy with our experience with bitterroot floors! We had a couple hiccups but they were quick to remedy and very accommodating! They put carpet in our entire downstairs and our stairs/landing. It looks incredible & was fairly priced. We can’t wait to do our upstairs bedrooms next!",
-    name: "Jade Houser",
-    detail: "Customer review",
+      "Super happy with our experience with bitterroot floors! We had a couple hiccups but they were quick to remedy and very accommodating! They put carpet in our entire downstairs and our stairs/landing. It looks incredible and was fairly priced. We can't wait to do our upstairs bedrooms next!",
+    detail: "Jade Houser, Bitterroot Valley",
   },
   {
     quote:
       "Krystal took the time to go over the products we were interested in and offered the right products based on our needs and budget. I appreciated their large selection of flooring and personalized customer service.",
-    name: "Liz Pickford",
-    detail: "Customer review",
+    detail: "Liz Pickford, Bitterroot Valley",
   },
   {
     quote:
       "Amazing service with affordable prices! The owner was honest and direct in helping me determine what flooring would work best in my home. Plus the installation was done on-time and looks amazing!",
-    name: "Kamie Gladden",
-    detail: "Customer review",
+    detail: "Kamie Gladden, Bitterroot Valley",
   },
 ];
 
@@ -168,7 +168,7 @@ function Icon({ type }) {
   };
 
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="feature-svg">
       {icons[type]}
     </svg>
   );
@@ -177,7 +177,15 @@ function Icon({ type }) {
 function App() {
   const [openFaq, setOpenFaq] = useState(0);
   const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const [heroForm, setHeroForm] = useState({ name: "", phone: "", zipCode: "" });
+  const [heroFormSubmitted, setHeroFormSubmitted] = useState(false);
   const heroImages = [heroImageOne, heroImageTwo];
+
+  const trackMetaEvent = (eventName) => {
+    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      window.fbq("track", eventName);
+    }
+  };
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -187,8 +195,19 @@ function App() {
     return () => window.clearInterval(intervalId);
   }, [heroImages.length]);
 
+  const handleHeroFormChange = (event) => {
+    const { name, value } = event.target;
+    setHeroForm((currentForm) => ({ ...currentForm, [name]: value }));
+  };
+
+  const handleHeroFormSubmit = (event) => {
+    event.preventDefault();
+    trackMetaEvent("Lead");
+    setHeroFormSubmitted(true);
+  };
+
   return (
-    <main className="bg-[var(--ink)] text-white">
+    <main className="bg-[var(--ink)] pb-20 text-white md:pb-0">
       <section className="hero-shell">
         <div className="hero-overlay" />
         <div className="mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-5 py-10 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
@@ -203,18 +222,20 @@ function App() {
               Find the Perfect Floors in a Showroom Built to Make Choosing Easy.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-white/82 sm:text-lg">
-              Visit Bitterroot Floors & More to explore premium flooring in person, compare styles side
-              by side, and get expert guidance from a local team that knows how to match the right floor
-              to your home.
+              Walk in, see it, touch it, and leave knowing exactly what you want.
             </p>
+            <a href={BUSINESS_PHONE_LINK} className="hero-phone-link mt-5 inline-flex">
+              Call {BUSINESS_PHONE}
+            </a>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#final-cta" className="primary-button">
-                Book a Consultation
+              <a href="#hero-form" className="primary-button hero-primary-button">
+                Get Your Free Estimate
               </a>
               <a href="#offer" className="secondary-button">
                 View 0% Financing
               </a>
             </div>
+            <p className="urgency-line mt-5">Spring Installation Slots Filling Fast</p>
             <div className="mt-6 flex flex-wrap gap-3">
               {trustBadges.map((badge) => (
                 <span key={badge} className="pill">
@@ -222,6 +243,45 @@ function App() {
                 </span>
               ))}
             </div>
+            <form id="hero-form" onSubmit={handleHeroFormSubmit} className="hero-form mt-8">
+              <div className="hero-form-grid">
+                <input
+                  type="text"
+                  name="name"
+                  value={heroForm.name}
+                  onChange={handleHeroFormChange}
+                  placeholder="Name"
+                  className="hero-form-input"
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={heroForm.phone}
+                  onChange={handleHeroFormChange}
+                  placeholder="Phone"
+                  className="hero-form-input"
+                  required
+                />
+                <input
+                  type="text"
+                  name="zipCode"
+                  value={heroForm.zipCode}
+                  onChange={handleHeroFormChange}
+                  placeholder="Zip Code"
+                  className="hero-form-input"
+                  required
+                />
+              </div>
+              <button type="submit" className="primary-button hero-primary-button mt-4">
+                Get Your Free Estimate
+              </button>
+              <p className="hero-form-note mt-3">
+                {heroFormSubmitted
+                  ? `Thanks. Call ${BUSINESS_PHONE} and mention your request so the team can help right away.`
+                  : "Share your details and we will help you start with a free estimate."}
+              </p>
+            </form>
           </div>
 
           <div className="relative z-10">
@@ -242,7 +302,7 @@ function App() {
                   <span className="metric-label">Years serving the valley</span>
                 </div>
                 <div className="metric-card">
-                  <span className="metric-value">Huge</span>
+                  <span className="metric-value">5-Star</span>
                   <span className="metric-label">Five-star rating</span>
                 </div>
                 <div className="metric-card">
@@ -297,7 +357,8 @@ function App() {
           <h2 className="section-heading-dark mt-4">A Showroom Experience That Actually Helps You Decide.</h2>
           <p className="section-copy-dark mx-auto mt-5 max-w-3xl">
             Step into a curated showroom where you can compare premium samples, ask questions, and get
-            practical design guidance without pressure. Ask about design services if you want extra help pulling the right look together.
+            practical design guidance without pressure. Ask about design services if you want extra help
+            pulling the right look together.
           </p>
           <div className="consultation-showcase mx-auto mt-10">
             <img
@@ -347,6 +408,37 @@ function App() {
         </div>
       </section>
 
+      <section id="offer" className="offer-section">
+        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 lg:px-12">
+          <div className="offer-card">
+            <div>
+              <p className="section-tag">Get Pre-Approved for 0% Financing</p>
+              <h2 className="mt-4 max-w-2xl text-4xl font-[800] leading-tight tracking-[-0.03em] text-[var(--ink)] sm:text-5xl">
+                Premium Floors. Zero Percent Stress.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700">
+                Visit the showroom, choose the floors you want, and spread the cost over time with our
+                exclusive promotional financing.
+              </p>
+            </div>
+            <div className="offer-grid mt-10">
+              <div className="offer-stat">
+                <span className="offer-big">0%</span>
+                <span className="offer-small">Interest Financing</span>
+              </div>
+              <div className="offer-callout">
+                <span className="category-chip">Price Match Guarantee</span>
+                <span className="category-chip">No Hidden Installation Fees</span>
+                <p className="mt-4 text-sm text-slate-500">Subject to credit approval.</p>
+              </div>
+            </div>
+            <a href="#hero-form" className="primary-button hero-primary-button mt-10 inline-flex">
+              Get Your Free Estimate
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="section-cream">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
           <div className="before-after-card">
@@ -376,7 +468,9 @@ function App() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <p className="section-tag">Read More Reviews</p>
-            <h2 className="section-heading-dark mt-4">Loved by Over 5,000 Local Homeowners.</h2>
+            <h2 className="section-heading-dark mt-4">
+              5,000+ Floors Installed Since {BUSINESS_START_YEAR}.
+            </h2>
             <p className="section-copy-dark mt-5">
               Do not just take our word for it. See why your neighbors rate Bitterroot 5 stars for
               speed, professionalism, and clean installs.
@@ -384,7 +478,10 @@ function App() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="category-chip">25+ Five-Star Reviews on Google</span>
+            <span className="google-review-badge">
+              <span className="google-review-stars">5-Star</span>
+              <span>{GOOGLE_REVIEW_SUMMARY}</span>
+            </span>
           </div>
 
           <div className="review-grid mt-10">
@@ -401,15 +498,18 @@ function App() {
                 <p className="mt-4 text-2xl font-[800] leading-tight text-[var(--ink)]">
                   &quot;{testimonials[0].quote}&quot;
                 </p>
-                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-slate-500">{testimonials[0].name}</p>
+                <p className="mt-6 text-sm uppercase tracking-[0.12em] text-slate-500">
+                  - {testimonials[0].detail}
+                </p>
               </article>
               <div className="review-card-grid">
                 {testimonials.slice(1).map((testimonial) => (
-                  <article key={testimonial.name} className="testimonial-card">
+                  <article key={testimonial.detail} className="testimonial-card">
                     <div className="star-row">5.0 / 5</div>
                     <p className="mt-4 text-base leading-7 text-slate-700">&quot;{testimonial.quote}&quot;</p>
-                    <p className="mt-5 text-sm font-[800] text-[var(--ink)]">{testimonial.name}</p>
-                    <p className="text-sm text-slate-500">{testimonial.detail}</p>
+                    <p className="mt-5 text-sm font-[800] uppercase tracking-[0.12em] text-slate-500">
+                      - {testimonial.detail}
+                    </p>
                   </article>
                 ))}
               </div>
@@ -435,36 +535,6 @@ function App() {
                 <p className="mt-4 text-sm leading-7 text-white/72">{step.description}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="offer" className="offer-section">
-        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 lg:px-12">
-          <div className="offer-card">
-            <div>
-              <p className="section-tag">Get Pre-Approved for 0% Financing</p>
-              <h2 className="mt-4 max-w-2xl text-4xl font-[800] leading-tight tracking-[-0.03em] text-[var(--ink)] sm:text-5xl">
-                Premium Floors. Zero Percent Stress.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700">
-                Visit the showroom, choose the floors you want, and spread the cost over time with our exclusive promotional financing.
-              </p>
-            </div>
-            <div className="offer-grid mt-10">
-              <div className="offer-stat">
-                <span className="offer-big">0%</span>
-                <span className="offer-small">Interest Financing</span>
-              </div>
-              <div className="offer-callout">
-                <span className="category-chip">Price Match Guarantee</span>
-                <span className="category-chip">No Hidden Installation Fees</span>
-                <p className="mt-4 text-sm text-slate-500">Subject to credit approval.</p>
-              </div>
-            </div>
-            <a href="#final-cta" className="primary-button mt-10 inline-flex">
-              Book a Consultation
-            </a>
           </div>
         </div>
       </section>
@@ -516,8 +586,8 @@ function App() {
               placeholder="Enter your phone or email"
               className="cta-input"
             />
-            <a href="https://example.com/free-estimate" className="primary-button">
-              Book My Consultation
+            <a href="#hero-form" className="primary-button footer-primary-button">
+              Get Your Free Estimate
             </a>
           </div>
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-white/68">
@@ -527,6 +597,15 @@ function App() {
           </div>
         </div>
       </section>
+
+      <div className="mobile-sticky-bar">
+        <a href={BUSINESS_PHONE_LINK} className="mobile-sticky-call">
+          Call {BUSINESS_PHONE}
+        </a>
+        <a href="#hero-form" className="mobile-sticky-estimate">
+          Get Free Estimate
+        </a>
+      </div>
     </main>
   );
 }
