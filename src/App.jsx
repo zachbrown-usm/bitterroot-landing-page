@@ -5,14 +5,14 @@ import beforeAfterImage from "./assets/Before and After 1.png";
 
 const trustBadges = [
   "5-Star Google Rating",
-  "0% Interest for 36 Months",
+  "0% Interest Financing",
   "30+ Years Serving the Valley",
 ];
 
 const painPoints = [
   "Hidden installation costs that show up late in the process",
   "Confusing material choices with no expert guidance",
-  "Wasted weekends driving from store to store",
+  "Wasted time driving from store to store for answers",
 ];
 
 const features = [
@@ -23,8 +23,8 @@ const features = [
   },
   {
     icon: "PHONE",
-    title: "Advanced Room Visualizer",
-    description: "Preview flooring styles in your space before you commit so decisions feel clear and confident.",
+    title: "Design Help & Room Visualizer",
+    description: "Ask about design services and preview flooring styles in your space before you commit.",
   },
   {
     icon: "BADGE",
@@ -78,9 +78,9 @@ const steps = [
 
 const faqs = [
   {
-    question: "Do I need to move my furniture?",
+    question: "When is the showroom open?",
     answer:
-      "We help coordinate the prep process and handle the heavy lifting details so the project feels simple, not overwhelming.",
+      "The showroom is open on weekdays and is not open on weekends. Call ahead if you want to book a consultation with the team.",
   },
   {
     question: "How long does installation take?",
@@ -88,9 +88,9 @@ const faqs = [
       "Most projects move quickly once materials are selected. Your estimate includes a realistic timeline based on room size and product type.",
   },
   {
-    question: "What is included in your lifetime warranty?",
+    question: "Do you offer design help?",
     answer:
-      "Our team walks you through product and installation coverage clearly so you know exactly what is protected before the job starts.",
+      "Yes. If you want help narrowing down styles, colors, or materials, ask about our design services during your consultation.",
   },
   {
     question: "Are your floors pet-friendly?",
@@ -180,7 +180,7 @@ function App() {
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a href="#final-cta" className="primary-button">
-                Plan Your Showroom Visit
+                Book a Consultation
               </a>
               <a href="#offer" className="secondary-button">
                 View 0% Financing
@@ -240,7 +240,7 @@ function App() {
           </div>
           <div>
             <p className="section-tag">Discover a Better Way</p>
-            <h2 className="section-heading mt-4">Tired of Wasting Weekends in Overwhelming Warehouses?</h2>
+            <h2 className="section-heading mt-4">Skip the Guesswork and Get Expert Guidance from the Start.</h2>
             <p className="section-copy mt-5">
               Buying new floors should not mean endless trips to confusing big-box stores, hidden
               installation fees, or trying to guess how a tiny sample will look in your unique lighting.
@@ -267,7 +267,7 @@ function App() {
           <h2 className="section-heading-dark mt-4">A Showroom Experience That Actually Helps You Decide.</h2>
           <p className="section-copy-dark mx-auto mt-5 max-w-3xl">
             Step into a curated showroom where you can compare premium samples, ask questions, and get
-            practical design guidance without pressure. It is the easiest way to feel confident before you buy.
+            practical design guidance without pressure. Ask about design services if you want extra help pulling the right look together.
           </p>
           <div className="consultation-showcase mx-auto mt-10">
             <div className="sample-scene">
@@ -355,7 +355,6 @@ function App() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="category-chip">Angi Super Service Award</span>
             <span className="category-chip">BBB A+ Rating</span>
             <span className="category-chip">Google 5-Star Logo</span>
           </div>
@@ -425,7 +424,7 @@ function App() {
             <div className="offer-grid mt-10">
               <div className="offer-stat">
                 <span className="offer-big">0%</span>
-                <span className="offer-small">Interest for 36 Months</span>
+                <span className="offer-small">Interest Financing</span>
               </div>
               <div className="offer-callout">
                 <span className="category-chip">Price Match Guarantee</span>
@@ -434,7 +433,7 @@ function App() {
               </div>
             </div>
             <a href="#final-cta" className="primary-button mt-10 inline-flex">
-              Get Pre-Approved for 0% Financing
+              Book a Consultation
             </a>
           </div>
         </div>
@@ -476,11 +475,10 @@ function App() {
         <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 lg:px-12">
           <p className="section-tag text-white/72">Claim My Free Estimate Now</p>
           <h2 className="mt-4 text-4xl font-[800] leading-tight tracking-[-0.03em] text-white sm:text-5xl">
-            Ready to Visit the Showroom?
+            Ready to Book a Consultation?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/78">
-            Plan your showroom visit, explore the best options in person, and take the next step toward
-            new floors with expert help and no pressure.
+            Book a consultation, explore the best options in person, and ask about design services if you want help creating the right look for your home.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <input
@@ -489,11 +487,11 @@ function App() {
               className="cta-input"
             />
             <a href="https://example.com/free-estimate" className="primary-button">
-              Plan My Showroom Visit
+              Book My Consultation
             </a>
           </div>
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-white/68">
-            <span>100% Satisfaction Guarantee</span>
+            <span>Weekday showroom consultations</span>
             <span className="h-1 w-1 rounded-full bg-white/50" />
             <span>Secure request form</span>
           </div>
